@@ -35,6 +35,7 @@ jobs:
           with:
             galasactl-args: |
               - runs
+              - submit
               - local
               - --obr dev.galasa.example.banking.obr
               - --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking/0.0.1-SNAPSHOT/obr
