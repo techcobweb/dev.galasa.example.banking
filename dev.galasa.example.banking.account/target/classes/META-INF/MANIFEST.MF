@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1698363289025
+Build-Jdk: 11.0.16.1-ea
+Built-By: mcobbett
+Bundle-ManifestVersion: 2
+Bundle-Name: dev.galasa.example.banking.account
+Bundle-SymbolicName: dev.galasa.example.banking.account
+Bundle-Version: 0.0.1.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: dev.galasa.example.banking.account;uses:="dev.galasa,dev
+ .galasa.artifact,dev.galasa.core.manager,org.apache.commons.logging";ve
+ rsion="0.0.1"
+Import-Package: dev.galasa;version="[0.21,1)",dev.galasa.artifact;versio
+ n="[0.25,1)",dev.galasa.core.manager;version="[0.25,1)",org.apache.comm
+ ons.logging;version="[1.2,2)",org.assertj.core.api;version="[3.11,4)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Tool: Bnd-4.1.0.201810181252

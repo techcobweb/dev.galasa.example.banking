@@ -1,0 +1,4 @@
+
+# The galasactl tool will create a lib/ folder with a boot jar inside.
+# We don't ever want to check-in that jar.
+lib/

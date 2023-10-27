@@ -1,0 +1,33 @@
+{
+  "classes": {
+    "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee": {
+      "name": "dev.galasa.example.banking.payee.TestPayee",
+      "bundle": "dev.galasa.example.banking.payee",
+      "shortName": "TestPayee",
+      "package": "dev.galasa.example.banking.payee"
+    },
+    "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended": {
+      "name": "dev.galasa.example.banking.payee.TestPayeeExtended",
+      "bundle": "dev.galasa.example.banking.payee",
+      "shortName": "TestPayeeExtended",
+      "package": "dev.galasa.example.banking.payee"
+    }
+  },
+  "packages": {
+    "dev.galasa.example.banking.payee": [
+      "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee",
+      "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended"
+    ]
+  },
+  "bundles": {
+    "dev.galasa.example.banking.payee": {
+      "packages": {
+        "dev.galasa.example.banking.payee": [
+          "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee",
+          "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended"
+        ]
+      }
+    }
+  },
+  "sharedEnvironments": {}
+}
