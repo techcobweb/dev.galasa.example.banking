@@ -34,19 +34,19 @@ jobs:
           uses: techcobweb/galasactl-action@v0.30.0
           with:
             galasactl-args: |
-              - runs
-              - submit
-              - local
-              - --obr dev.galasa.example.banking.obr
-              - --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking/0.0.1-SNAPSHOT/obr
-              - --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount
-              - --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended
-              - --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee
-              - --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended
-              - --throttle 1
-              - --requesttype MikeCLI
-              - --poll 10
-              - --progress 1
-              - --log -
+              runs
+              submit
+              local
+              --obr dev.galasa.example.banking.obr
+              --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking/0.0.1-SNAPSHOT/obr
+              --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount
+              --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended
+              --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee
+              --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended
+              --throttle 1
+              --requesttype MikeCLI
+              --poll 10
+              --progress 1
+              --log -
           env:
             GALASA_HOME: home
