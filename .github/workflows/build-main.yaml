@@ -5,6 +5,9 @@ on:
     branches: 
       - main
 
+env:
+  GALASA_VERSION: 0.31.0
+
 jobs:
 
   build-and-publish-to-github-maven:
@@ -25,6 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   galasactl-version-job:
+    needs: build-and-publish-to-github-maven
     runs-on: ubuntu-latest
     name: A job to invoke galasactl
     steps:
@@ -34,3 +38,5 @@ jobs:
         with:
           galasactl-args: |
             - --version
+        env:
+          GALASA_VERSION: "$GALASA_VERSION"
