@@ -23,37 +23,33 @@ jobs:
           name: Package
           path: staging
 
-  test:
-    runs-on: ubunti-latest
-    container:
-      image: gh.io/techcobweb/galasactl-image:main
+  # test:
+  #   runs-on: gh.io/techcobweb/galasactl-image
     
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout the code
+  #       uses: actions/checkout@v4
 
-      - name: Run galasa tests locally
-        run: /app/galasactl --version
-
-
+  #     - name: Run galasa tests locally
+  #       uses: techcobweb/galasactl-action@v0.30.0
     
-        # with:
-        #   galasactl-args: |
-        #     runs
-        #     submit
-        #     local
-        #     --obr dev.galasa.example.banking.obr
-        #     --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking/0.0.1-SNAPSHOT/obr
-        #     --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount
-        #     --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended
-        #     --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee
-        #     --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended
-        #     --throttle 1
-        #     --requesttype MikeCLI
-        #     --poll 10
-        #     --progress 1
-        #     --log -
-        #     --galasahome /mnt/home
+  #       with:
+  #         galasactl-args: |
+  #           runs
+  #           submit
+  #           local
+  #           --obr dev.galasa.example.banking.obr
+  #           --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking/0.0.1-SNAPSHOT/obr
+  #           --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount
+  #           --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended
+  #           --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee
+  #           --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended
+  #           --throttle 1
+  #           --requesttype MikeCLI
+  #           --poll 10
+  #           --progress 1
+  #           --log -
+  #           --galasahome /mnt/home
       
 
             
