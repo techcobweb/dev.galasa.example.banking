@@ -1,0 +1,28 @@
+name: build-main
+run-name: ${{ github.actor }} 
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+
+  build-publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Publish package
+        run: mvn --batch-mode --update-snapshots deploy
+        env:
+          GITHUB_ORG: techcobweb
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  

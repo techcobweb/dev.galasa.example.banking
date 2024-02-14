@@ -1,0 +1,33 @@
+name: build-pr
+run-name: ${{ github.actor }} 
+on:
+  pull_request:
+    branches: 
+      # All branches
+      - '**'
+    # Do we need to ignore main for this ?
+    # branches-ignore:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Setup java 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots package
+
+
+      - name: Build with Maven
+        # --update-snapshots allows this build to update the build cache.
+        run: mvn --batch-mode --update-snapshots package install
+
+     
