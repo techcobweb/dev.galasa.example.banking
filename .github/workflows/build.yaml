@@ -23,6 +23,10 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package
 
+
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots package install deploy
+
       # - run: mkdir staging && cp dev.galasa.example/banking/target/*.jar staging
       # - uses: actions/upload-artifact@v4
       #   with:
