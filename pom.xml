@@ -25,6 +25,14 @@
 		<module>dev.galasa.example.banking.obr</module>
 	</modules>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/techcobweb/dev.galasa.example.banking</url>
+		</repository>
+    </distributionManagement>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
