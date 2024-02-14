@@ -19,9 +19,18 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: Publish package
+      - name: Build and publish maven packages
         run: mvn --batch-mode --update-snapshots deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  
+  galasactl-version-job:
+    runs-on: ubuntu-latest
+    name: A job to invoke galasactl
+    steps:
+      - name: which version of galasactl are we using
+        id: galasacrl-version
+        uses: techcobweb/galasactl-action@v5
+        with:
+          galasactl-args: |
+            - --version
