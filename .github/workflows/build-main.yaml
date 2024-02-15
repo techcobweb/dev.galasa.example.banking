@@ -39,4 +39,4 @@ jobs:
           galasactl-args: |
             --version
         env:
-          GALASA_VERSION: $GALASA_VERSION
+          GALASA_VERSION: ${GALASA_VERSION}
