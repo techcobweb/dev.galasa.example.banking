@@ -35,6 +35,7 @@ jobs:
         id: galasacrl-version
         uses: addnab/docker-run-action@v3
         with:
-          image: docker://icr.io/galasadev/galasa-cli-amd64:latest
+          registry: icr.io
+          image: galasadev/galasa-cli-amd64:latest
           run: |
             galasactl --version
