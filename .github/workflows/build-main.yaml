@@ -5,6 +5,9 @@ on:
     branches: 
       - main
 
+env:
+  GALASACTL_VERSION: "0.30.0"
+
 jobs:
 
   build-and-publish-to-github-maven:
@@ -36,6 +39,6 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           registry: icr.io
-          image: galasadev/galasa-cli-amd64:latest
+          image: galasadev/galasa-cli-amd64:${{env.GALASACTL_VERSION}}
           run: |
             galasactl --version
