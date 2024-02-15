@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GALASA_VERSION: 0.31.0
+  GALASA_VERSION: "0.31.0"
 
 jobs:
 
