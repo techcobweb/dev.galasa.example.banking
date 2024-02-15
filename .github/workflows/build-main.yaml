@@ -28,13 +28,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   galasactl-version-job:
+    runs-on: docker://icr.io/galasadev/galasa-cli-amd64:latest
     needs: build-and-publish-to-github-maven
-    runs-on: ubuntu-latest
+
     name: A job to invoke galasactl
     steps:
       - name: which version of galasactl are we using
         id: galasacrl-version
-        uses: techcobweb/galasactl-action@v0.31.0
-        with:
-          galasactl-args: |
-            --version
+        run: galasactl --version
