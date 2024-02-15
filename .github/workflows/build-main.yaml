@@ -34,9 +34,8 @@ jobs:
     steps:
       - name: which version of galasactl are we using
         id: galasacrl-version
-        uses: techcobweb/galasactl-action@v13
+        uses: techcobweb/galasactl-action@v15
         with:
           galasactl-args: |
             --version
-        env:
-          GALASA_VERSION: ${{env.GALASA_VERSION}}
+          galasactl-version: "0.31.0"
