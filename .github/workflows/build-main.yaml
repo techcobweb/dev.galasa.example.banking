@@ -37,6 +37,6 @@ jobs:
         uses: techcobweb/galasactl-action@v9
         with:
           galasactl-args: |
-            - --version
+            --version
         env:
-          GALASA_VERSION: "$GALASA_VERSION"
+          GALASA_VERSION: $GALASA_VERSION
