@@ -38,8 +38,7 @@ jobs:
         uses: techcobweb/galasactl-action@v1
         with:
           galasactl_version: ${{env.GALASACTL_VERSION}}
-          galasactl_args: |
-            --version
+          galasactl_args: --version
 
       - name: run simple test
         uses: techcobweb/galasactl-action@v1
