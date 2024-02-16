@@ -35,12 +35,26 @@ jobs:
     steps:
 
       - name: which version of galasactl are we using
-        id: galasactl-version
         uses: techcobweb/galasactl-action@v1
         with:
+          galasactl_version: ${{env.GALASACTL_VERSION}}
           galasactl_args: |
             --version
-          galasactl_version: "0.31.0"
+
+      - name: run simple test
+        uses: techcobweb/galasactl-action@v1
+        with:
+          galasactl_version: ${{env.GALASACTL_VERSION}}
+          galasactl_args: |
+            runs submit local \
+            --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking.payee/0.0.1-SNAPSHOT \
+            --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking.account/0.0.1-SNAPSHOT \
+            --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee \
+            --class dev.galasa.example.banking.payee/dev.galasa.example.banking.account.TestAccount \
+            --remoteMaven ${{env.MAVEN_CENTRAL_URL}} \
+            --throttle 1 \
+            --log -
+
 
 
   # galasactl-version-job:
