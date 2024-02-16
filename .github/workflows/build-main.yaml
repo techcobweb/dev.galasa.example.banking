@@ -35,10 +35,12 @@ jobs:
     steps:
 
       - name: which version of galasactl are we using
-        id: galasacrl-version
+        id: galasactl-version
         uses: techcobweb/galasactl-action@v1
-
-
+        with:
+          galasactl_args: |
+            --version
+          galasactl_version: "0.31.0"
 
 
   # galasactl-version-job:
@@ -47,7 +49,7 @@ jobs:
   #   name: invoke galasactl
   #   steps:
   #     - name: which version of galasactl are we using
-  #       id: galasacrl-version
+  #       id: galasactl-version
   #       uses: addnab/docker-run-action@v3
   #       with:
   #         image: icr.io/galasadev/galasa-cli-amd64:${{env.GALASACTL_VERSION}}
