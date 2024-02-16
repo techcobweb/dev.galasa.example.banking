@@ -1,0 +1,62 @@
+{
+  "classes": {
+    "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended": {
+      "name": "dev.galasa.example.banking.payee.TestPayeeExtended",
+      "bundle": "dev.galasa.example.banking.payee",
+      "shortName": "TestPayeeExtended",
+      "package": "dev.galasa.example.banking.payee"
+    },
+    "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee": {
+      "name": "dev.galasa.example.banking.payee.TestPayee",
+      "bundle": "dev.galasa.example.banking.payee",
+      "shortName": "TestPayee",
+      "package": "dev.galasa.example.banking.payee"
+    },
+    "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount": {
+      "name": "dev.galasa.example.banking.account.TestAccount",
+      "bundle": "dev.galasa.example.banking.account",
+      "shortName": "TestAccount",
+      "package": "dev.galasa.example.banking.account"
+    },
+    "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended": {
+      "name": "dev.galasa.example.banking.account.TestAccountExtended",
+      "bundle": "dev.galasa.example.banking.account",
+      "shortName": "TestAccountExtended",
+      "package": "dev.galasa.example.banking.account"
+    }
+  },
+  "packages": {
+    "dev.galasa.example.banking.payee": [
+      "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended",
+      "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee"
+    ],
+    "dev.galasa.example.banking.account": [
+      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount",
+      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended"
+    ]
+  },
+  "bundles": {
+    "dev.galasa.example.banking.payee": {
+      "packages": {
+        "dev.galasa.example.banking.payee": [
+          "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended",
+          "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee"
+        ]
+      }
+    },
+    "dev.galasa.example.banking.account": {
+      "packages": {
+        "dev.galasa.example.banking.account": [
+          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount",
+          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended"
+        ]
+      }
+    }
+  },
+  "sharedEnvironments": {},
+  "gherkin": {},
+  "name": "dev.galasa.example.banking.obr",
+  "build": "dev.galasa.example.banking:dev.galasa.example.banking.obr:0.0.1-SNAPSHOT - 2024-02-15T14:18:43.110488Z",
+  "version": "0.0.1-SNAPSHOT",
+  "built": "2024-02-15T14:18:43.110488Z"
+}

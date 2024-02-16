@@ -24,6 +24,7 @@
 	<modules>
 		<module>dev.galasa.example.banking.payee</module>
 		<module>dev.galasa.example.banking.account</module>
+		<module>dev.galasa.example.banking.obr</module>
 	</modules>
 
 	<distributionManagement>

@@ -7,7 +7,6 @@ on:
 
 env:
   GALASACTL_VERSION: "0.31.0"
-  MAVEN_TEST_GROUP: dev.galasa.example.banking
   MAVEN_CENTRAL_URL: https://repo.maven.apache.org/maven2
 
 jobs:
@@ -29,34 +28,46 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  galasactl-version-job:
-    runs-on: ubuntu-latest
-     
-    needs: build-and-publish-to-github-maven
 
-    name: invoke galasactl
+  run-galasa-tests:
+    runs-on: ubuntu-latest
+    needs: build-and-publish-to-github-maven
     steps:
+
       - name: which version of galasactl are we using
         id: galasacrl-version
-        uses: addnab/docker-run-action@v3
-        with:
-          image: icr.io/galasadev/galasa-cli-amd64:${{env.GALASACTL_VERSION}}
-          run: |
-            galasactl --version
+        uses: techcobweb/galasactl-action@v1
 
-      - name: run the tests we compiled earlier
-        id: run-galasa-tests
-        uses: addnab/docker-run-action@v3
-        with:
-          image: icr.io/galasadev/galasa-cli-amd64:${{env.GALASACTL_VERSION}}
-          options: -v ${{ github.workspace }}:/
-          run: |
-            galasactl runs submit local \
-            --obr mvn:${{env.MAVEN_TEST_GROUP}}/dev.galasa.example.banking.payee/0.0.1-SNAPSHOT \
-            --obr mvn:${{env.MAVEN_TEST_GROUP}}/dev.galasa.example.banking.account/0.0.1-SNAPSHOT \
-            --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee \
-            --class dev.galasa.example.banking.payee/dev.galasa.example.banking.account.TestAccount \
-            --remoteMaven ${{env.MAVEN_CENTRAL_URL}} \
-            --throttle 1 \
-            --log -
+
+
+
+  # galasactl-version-job:
+  #   runs-on: ubuntu-latest
+  #   needs: build-and-publish-to-github-maven
+  #   name: invoke galasactl
+  #   steps:
+  #     - name: which version of galasactl are we using
+  #       id: galasacrl-version
+  #       uses: addnab/docker-run-action@v3
+  #       with:
+  #         image: icr.io/galasadev/galasa-cli-amd64:${{env.GALASACTL_VERSION}}
+  #         run: |
+  #           galasactl --version
+
+  #     - name: run the tests we compiled earlier
+  #       id: run-galasa-tests
+  #       uses: addnab/docker-run-action@v3
+  #       with:
+  #         image: icr.io/galasadev/galasa-cli-amd64:${{env.GALASACTL_VERSION}}
+  #         options: -v ${{ github.workspace }}:/
+  #         run: |
+  #           galasactl runs submit local \
+  #           --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking.payee/0.0.1-SNAPSHOT \
+  #           --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking.account/0.0.1-SNAPSHOT \
+  #           --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee \
+  #           --class dev.galasa.example.banking.payee/dev.galasa.example.banking.account.TestAccount \
+  #           --remoteMaven ${{env.MAVEN_CENTRAL_URL}} \
+  #           --localMaven 
+  #           --throttle 1 \
+  #           --log -
 
