@@ -19,6 +19,15 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<unpackBundle>true</unpackBundle>
+
+		<!-- Setting some properties used to deploy the test catalog to the galasa ecosystem -->
+		<!-- Override this value when you invoke maven using mvn clean install deploy "-DGALASA_TOKEN=..." -->
+		<galasa.token>${GALASA_TOKEN}</galasa.token>
+		<galasa.bootstrap>${GALASA_BOOTSTRAP}</galasa.bootstrap>
+		<galasa.test.stream>${GALASA_STREAM}</galasa.test.stream>
+
+		<galasa.skip.bundletestcatalog>true</galasa.skip.bundletestcatalog>
+		<galasa.skip.deploytestcatalog>true</galasa.skip.deploytestcatalog>
 	</properties>
   
 	<modules>
@@ -85,7 +94,7 @@
 				<plugin>
 					<groupId>dev.galasa</groupId>
 					<artifactId>galasa-maven-plugin</artifactId>
-					<version>0.29.0</version>
+					<version>0.32.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -100,11 +109,23 @@
 				<artifactId>galasa-maven-plugin</artifactId>
 				<extensions>true</extensions>
 				<executions>
+
+					<!-- Build a test catalog -->
 					<execution>
 						<id>build-testcatalog</id>
 						<phase>package</phase>
 						<goals>
-						<goal>bundletestcat</goal>
+							<goal>bundletestcat</goal>
+						</goals>
+					</execution>
+
+					<!-- Publish the test catalog to the ecosystem -->
+					<!-- This uses the galasa.token, galasa.bootstrap and galasa.test.stream properties set above.-->
+					<execution>
+						<id>publish-testcatalog</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploytestcat</goal>
 						</goals>
 					</execution>
 				</executions>
