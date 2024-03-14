@@ -68,6 +68,10 @@ Options are:
   For example:
     inttests
 
+--maven : Optional. Use maven to deploy the test catalog. This is the default if either --gradle nor --maven are used explicitly.
+
+--gradle: Optional. Use gradle to deploy the test catalog. If missing, the --maven option is assumed.
+
 Environment variables:
 GALASA_BOOSTRAP : optional. Over-ridden by the --bootstrap option. 
     The script needs a value for this, so either the environment variable or the option must be specified.
@@ -80,6 +84,8 @@ GALASA_TOKEN : optional. Over-ridden by the --token option.
 
 EOF
 }
+
+BUILD_TECHNOLOGY="maven"
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -94,6 +100,10 @@ while [ "$1" != "" ]; do
                                 ;;
         --stream )              export GALASA_STREAM=$1
                                 shift
+                                ;;
+        --maven )               export BUILD_TECHNOLOGY="maven"
+                                ;;
+        --gradle )              export BUILD_TECHNOLOGY="gradle"
                                 ;;
         * )                     error "Unexpected argument $1"
                                 usage
@@ -127,9 +137,10 @@ function check_required_parameters_are_available {
     fi
 }
 
-function publish_to_server {
+function publish_to_server_using_maven {
     h1 "Publishing the test code to a Galasa ecosystem using maven"
-    info "We publish the maven artifacts to a maven store, and push the test catalog artifact into the Galasa server."
+    info "Normally a deploy target publishes the maven artifacts to a maven store, but we just want to push the test catalog artifact into the Galasa server."
+    # -Dmaven.deploy.skip=true causes the publishing of the maven artifacts to be skipped.
     cmd="mvn deploy dev.galasa:galasa-maven-plugin:deploytestcat \
         -Dmaven.deploy.skip=true
         -DGALASA_TOKEN=$GALASA_TOKEN \
@@ -141,5 +152,23 @@ function publish_to_server {
     success "OK"
 }
 
+function publish_to_server_using_gradle {
+    h1 "Publishing the test code to a Galasa ecosystem using gradle"
+    info "Normally a deploy target publishes the maven artifacts to a maven store, but we just want to push the test catalog artifact into the Galasa server."
+    cmd="gradle deploytestcat \
+        -DGALASA_TOKEN=$GALASA_TOKEN \
+        -DGALASA_BOOTSTRAP=$GALASA_BOOTSTRAP \
+        -DGALASA_STREAM=$GALASA_STREAM "
+    info "Command is $cmd"
+    $cmd
+    rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to publish the test catalog to the galasa ecosystem using maven. Return code: ${rc}" ; exit 1 ; fi
+    success "OK"
+}
+
 check_required_parameters_are_available
-publish_to_server 
+if [[ "${BUILD_TECHNOLOGY}" == "maven" ]]; then
+    publish_to_server_using_maven
+else 
+    publish_to_server_using_gradle
+fi
+

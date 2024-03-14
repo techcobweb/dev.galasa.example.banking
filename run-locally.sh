@@ -50,12 +50,10 @@ note() { printf "\n${underline}${bold}${blue}Note:${reset} ${blue}%s${reset}\n" 
 
 #-----------------------------------------------------------------------------------------
 function usage {
-    info "Syntax: build-locally.sh [OPTIONS]"
+    info "Syntax: run-locally.sh [OPTIONS]"
     cat << EOF
 Options are:
-
--g | --gradle : Use gradle to do the build. If missing, a maven build system will be used.
--m | --maven  : Use maven to do the build.
+<No options>
 EOF
 }
 
@@ -66,10 +64,6 @@ while [ "$1" != "" ]; do
         -h | --help )           usage
                                 exit
                                 ;;
-        -g | --gradle )         build_system="gradle"
-                                ;;
-        -m | --maven )          build_system="maven"
-                                ;;
         * )                     error "Unexpected argument $1"
                                 usage
                                 exit 1
@@ -78,26 +72,17 @@ while [ "$1" != "" ]; do
 done
 
 #-----------------------------------------------------------------------------------------
-function build_using_maven {
-    h1 "Building the test code using maven"
-    cmd="mvn clean test install"
-    info "Command is: $cmd"
+function run_tests {
+    h1 "Running the test code locally"
+    cmd="galasactl runs submit local --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking.obr/0.0.1-SNAPSHOT/obr \
+        --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount \
+        --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended \
+        --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended \
+        --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended \
+        --log -"
     $cmd
-    rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to build the test code using maven. Return code: ${rc}" ; exit 1 ; fi
+    rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to run the test code. Return code: ${rc}" ; exit 1 ; fi
     success "OK"
 }
 
-function build_using_gradle {
-    h1 "Building the test code using gradle"
-    cmd="gradle clean build publishMaven"
-    info "Command is: $cmd"
-    $cmd
-    rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to build the test code using maven. Return code: ${rc}" ; exit 1 ; fi
-    success "OK"
-}
-
-if [[ "$build_system" == "maven" ]]; then
-    build_using_maven
-else 
-    build_using_gradle
-fi
+run_tests

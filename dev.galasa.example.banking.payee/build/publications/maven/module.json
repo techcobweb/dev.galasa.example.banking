@@ -1,0 +1,98 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.galasa.example.banking",
+    "module": "dev.galasa.example.banking.payee",
+    "version": "0.0.1-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.9.2",
+      "buildId": "o7vrpqprynd3vfhaxfcvk4otf4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
+          "url": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
+          "size": 4274,
+          "sha512": "9ed596c13918c0d4abbb538c8dcf7f982314f3bee19de0c2e600c5f43da785dbce02cb3d60dee4b95081a32b82004160eed6c87f079199a7e18fde42e1e37263",
+          "sha256": "58a21e204d32bbaa18faa81c65a31da1eccb4083bac363018326383b59b8ff72",
+          "sha1": "9a65b74bf2a20b8d1c3764faef8bcf7233907049",
+          "md5": "85c05b74b172d26ab8709f7be9314ac1"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "dev.galasa",
+          "module": "galasa-bom",
+          "version": {
+            "requires": "0.32.0"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "dev.galasa",
+          "module": "dev.galasa"
+        },
+        {
+          "group": "dev.galasa",
+          "module": "dev.galasa.framework"
+        },
+        {
+          "group": "dev.galasa",
+          "module": "dev.galasa.core.manager"
+        },
+        {
+          "group": "dev.galasa",
+          "module": "dev.galasa.artifact.manager"
+        },
+        {
+          "group": "commons-logging",
+          "module": "commons-logging"
+        },
+        {
+          "group": "org.assertj",
+          "module": "assertj-core"
+        }
+      ],
+      "files": [
+        {
+          "name": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
+          "url": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
+          "size": 4274,
+          "sha512": "9ed596c13918c0d4abbb538c8dcf7f982314f3bee19de0c2e600c5f43da785dbce02cb3d60dee4b95081a32b82004160eed6c87f079199a7e18fde42e1e37263",
+          "sha256": "58a21e204d32bbaa18faa81c65a31da1eccb4083bac363018326383b59b8ff72",
+          "sha1": "9a65b74bf2a20b8d1c3764faef8bcf7233907049",
+          "md5": "85c05b74b172d26ab8709f7be9314ac1"
+        }
+      ]
+    }
+  ]
+}

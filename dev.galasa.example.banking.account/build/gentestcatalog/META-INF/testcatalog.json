@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "generated": "2024-03-14T14:45:33.118511Z",
+    "name": "dev.galasa.example.banking.account"
+  },
+  "classes": {
+    "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount": {
+      "name": "dev.galasa.example.banking.account.TestAccount",
+      "bundle": "dev.galasa.example.banking.account",
+      "shortName": "TestAccount",
+      "package": "dev.galasa.example.banking.account"
+    },
+    "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended": {
+      "name": "dev.galasa.example.banking.account.TestAccountExtended",
+      "bundle": "dev.galasa.example.banking.account",
+      "shortName": "TestAccountExtended",
+      "package": "dev.galasa.example.banking.account"
+    }
+  },
+  "packages": {
+    "dev.galasa.example.banking.account": [
+      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount",
+      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended"
+    ]
+  },
+  "bundles": {
+    "dev.galasa.example.banking.account": {
+      "packages": {
+        "dev.galasa.example.banking.account": [
+          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount",
+          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended"
+        ]
+      }
+    }
+  },
+  "sharedEnvironments": {}
+}

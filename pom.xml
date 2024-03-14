@@ -20,14 +20,21 @@
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<unpackBundle>true</unpackBundle>
 
+		<!-- 
+		Un-comment this line if you want to skip building a test catalog for your tests.
+		<galasa.skip.bundletestcatalog>true</galasa.skip.bundletestcatalog>
+		-->
+
+		<!--
+		Set the following value to true if you want to deploy the test catalog to an ecosystem
+		-->
+		<galasa.skip.deploytestcatalog>false</galasa.skip.deploytestcatalog> 
+
 		<!-- Setting some properties used to deploy the test catalog to the galasa ecosystem -->
 		<!-- Override this value when you invoke maven using mvn clean install deploy "-DGALASA_TOKEN=..." -->
 		<galasa.token>${GALASA_TOKEN}</galasa.token>
 		<galasa.bootstrap>${GALASA_BOOTSTRAP}</galasa.bootstrap>
 		<galasa.test.stream>${GALASA_STREAM}</galasa.test.stream>
-
-		<galasa.skip.bundletestcatalog>true</galasa.skip.bundletestcatalog>
-		<galasa.skip.deploytestcatalog>true</galasa.skip.deploytestcatalog>
 	</properties>
   
 	<modules>
