@@ -10,4 +10,4 @@
 
 temp/
 .gradle
-**/build
+**/build/
