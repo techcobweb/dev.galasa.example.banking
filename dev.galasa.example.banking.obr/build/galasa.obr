@@ -1,6 +1,6 @@
-<repository name='dev.galasa.example.banking:dev.galasa.example.banking.obr:0.0.1-SNAPSHOT' lastmodified='20240314024036.033'>
+<repository name='dev.galasa.example.banking:dev.galasa.example.banking.obr:0.0.1-SNAPSHOT' lastmodified='20240315051503.019'>
   <resource id='dev.galasa.example.banking.account/0.0.1.SNAPSHOT' symbolicname='dev.galasa.example.banking.account' presentationname='dev.galasa.example.banking.account' uri='mvn:dev.galasa.example.banking/dev.galasa.example.banking.account/0.0.1-SNAPSHOT/jar' version='0.0.1.SNAPSHOT'>
-    <size>4297</size>
+    <size>4294</size>
     <capability name='bundle'>
       <p n='symbolicname' v='dev.galasa.example.banking.account'/>
       <p n='presentationname' v='dev.galasa.example.banking.account'/>

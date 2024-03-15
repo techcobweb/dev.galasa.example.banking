@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.9.2",
-      "buildId": "o7vrpqprynd3vfhaxfcvk4otf4"
+      "buildId": "apo4nr53dbgtrlha4cbnkdhxna"
     }
   },
   "variants": [
@@ -29,10 +29,10 @@
           "name": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
           "url": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
           "size": 4274,
-          "sha512": "9ed596c13918c0d4abbb538c8dcf7f982314f3bee19de0c2e600c5f43da785dbce02cb3d60dee4b95081a32b82004160eed6c87f079199a7e18fde42e1e37263",
-          "sha256": "58a21e204d32bbaa18faa81c65a31da1eccb4083bac363018326383b59b8ff72",
-          "sha1": "9a65b74bf2a20b8d1c3764faef8bcf7233907049",
-          "md5": "85c05b74b172d26ab8709f7be9314ac1"
+          "sha512": "f1edd9808162ccb189a6e0854df83239604d165fc1a406f6b7dce37d697fd81e01f67bfa5145690310217a82f1bfdff785d08662399e87da01fb7e2067e5ac4b",
+          "sha256": "1466c71cb163a3a19d2cda49132f571f8bf7f358e526f468d7c4f3cbda0bd506",
+          "sha1": "8744a7a80ddd8d4b3bd3c5e7e4abf76029ec463f",
+          "md5": "d9d758100dee43297e08e35f17703cc2"
         }
       ]
     },
@@ -87,10 +87,10 @@
           "name": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
           "url": "dev.galasa.example.banking.payee-0.0.1-SNAPSHOT.jar",
           "size": 4274,
-          "sha512": "9ed596c13918c0d4abbb538c8dcf7f982314f3bee19de0c2e600c5f43da785dbce02cb3d60dee4b95081a32b82004160eed6c87f079199a7e18fde42e1e37263",
-          "sha256": "58a21e204d32bbaa18faa81c65a31da1eccb4083bac363018326383b59b8ff72",
-          "sha1": "9a65b74bf2a20b8d1c3764faef8bcf7233907049",
-          "md5": "85c05b74b172d26ab8709f7be9314ac1"
+          "sha512": "f1edd9808162ccb189a6e0854df83239604d165fc1a406f6b7dce37d697fd81e01f67bfa5145690310217a82f1bfdff785d08662399e87da01fb7e2067e5ac4b",
+          "sha256": "1466c71cb163a3a19d2cda49132f571f8bf7f358e526f468d7c4f3cbda0bd506",
+          "sha1": "8744a7a80ddd8d4b3bd3c5e7e4abf76029ec463f",
+          "md5": "d9d758100dee43297e08e35f17703cc2"
         }
       ]
     }

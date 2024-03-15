@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2024-03-14T14:45:33.524366Z",
+    "generated": "2024-03-15T17:15:03.024501Z",
     "name": "dev.galasa.example.banking.obr"
   },
   "classes": {
@@ -16,16 +16,16 @@
       "shortName": "TestPayeeExtended",
       "package": "dev.galasa.example.banking.payee"
     },
-    "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount": {
-      "name": "dev.galasa.example.banking.account.TestAccount",
-      "bundle": "dev.galasa.example.banking.account",
-      "shortName": "TestAccount",
-      "package": "dev.galasa.example.banking.account"
-    },
     "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended": {
       "name": "dev.galasa.example.banking.account.TestAccountExtended",
       "bundle": "dev.galasa.example.banking.account",
       "shortName": "TestAccountExtended",
+      "package": "dev.galasa.example.banking.account"
+    },
+    "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount": {
+      "name": "dev.galasa.example.banking.account.TestAccount",
+      "bundle": "dev.galasa.example.banking.account",
+      "shortName": "TestAccount",
       "package": "dev.galasa.example.banking.account"
     }
   },
@@ -35,8 +35,8 @@
       "dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended"
     ],
     "dev.galasa.example.banking.account": [
-      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount",
-      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended"
+      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended",
+      "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount"
     ]
   },
   "bundles": {
@@ -51,8 +51,8 @@
     "dev.galasa.example.banking.account": {
       "packages": {
         "dev.galasa.example.banking.account": [
-          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount",
-          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended"
+          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended",
+          "dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount"
         ]
       }
     }
@@ -62,5 +62,5 @@
   "name": "dev.galasa.example.banking.obr",
   "build": "gradle",
   "version": "0.0.1-SNAPSHOT",
-  "built": "2024-03-14T14:45:33.524366Z"
+  "built": "2024-03-15T17:15:03.024501Z"
 }

@@ -54,12 +54,12 @@ function usage {
     cat << EOF
 Options are:
 
--g | --gradle : Use gradle to do the build. If missing, a maven build system will be used.
--m | --maven  : Use maven to do the build.
+-g | --gradle : Use gradle to do the build. Either this flag or the --maven flag is required.
+-m | --maven  : Use maven to do the build. Either this flag or the --gradle flag is required.
 EOF
 }
 
-build_system="maven"
+build_system=""
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -76,6 +76,12 @@ while [ "$1" != "" ]; do
     esac
     shift
 done
+
+if [[ "$build_system" == "" ]]; then 
+    error "Either the --maven or --gradle flags are necessary"
+    usage
+    exit 1
+fi
 
 #-----------------------------------------------------------------------------------------
 function build_using_maven {

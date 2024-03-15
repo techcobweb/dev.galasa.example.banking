@@ -50,7 +50,7 @@ note() { printf "\n${underline}${bold}${blue}Note:${reset} ${blue}%s${reset}\n" 
 
 #-----------------------------------------------------------------------------------------
 function usage {
-    info "Syntax: deploy.sh [OPTIONS]"
+    info "Syntax: deploy-to-ecosystem.sh [OPTIONS]"
     cat << EOF
 Options are:
 --bootstrap : Optional. A URL to the bootstrap endpoing on the Galasa Ecosystem.
@@ -68,9 +68,8 @@ Options are:
   For example:
     inttests
 
---maven : Optional. Use maven to deploy the test catalog. This is the default if either --gradle nor --maven are used explicitly.
-
---gradle: Optional. Use gradle to deploy the test catalog. If missing, the --maven option is assumed.
+-g | --gradle : Use gradle to do the build. Either this flag or the --maven flag is required.
+-m | --maven  : Use maven to do the build. Either this flag or the --gradle flag is required.
 
 Environment variables:
 GALASA_BOOSTRAP : optional. Over-ridden by the --bootstrap option. 
@@ -85,7 +84,7 @@ GALASA_TOKEN : optional. Over-ridden by the --token option.
 EOF
 }
 
-BUILD_TECHNOLOGY="maven"
+build_system=""
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -101,9 +100,9 @@ while [ "$1" != "" ]; do
         --stream )              export GALASA_STREAM=$1
                                 shift
                                 ;;
-        --maven )               export BUILD_TECHNOLOGY="maven"
+        --maven )               export build_system="maven"
                                 ;;
-        --gradle )              export BUILD_TECHNOLOGY="gradle"
+        --gradle )              export build_system="gradle"
                                 ;;
         * )                     error "Unexpected argument $1"
                                 usage
@@ -111,6 +110,12 @@ while [ "$1" != "" ]; do
     esac
     shift
 done
+
+if [[ "$build_system" == "" ]]; then 
+    error "Either the --maven or --gradle flags are necessary"
+    usage
+    exit 1
+fi
 
 #-----------------------------------------------------------------------------------------
 function check_required_parameters_are_available {
@@ -141,12 +146,13 @@ function publish_to_server_using_maven {
     h1 "Publishing the test code to a Galasa ecosystem using maven"
     info "Normally a deploy target publishes the maven artifacts to a maven store, but we just want to push the test catalog artifact into the Galasa server."
     # -Dmaven.deploy.skip=true causes the publishing of the maven artifacts to be skipped.
-    cmd="mvn deploy dev.galasa:galasa-maven-plugin:deploytestcat \
+    # You could do `mvn deploy` which includes that step. Or do the following:
+    base_cmd="mvn install dev.galasa:galasa-maven-plugin:deploytestcat \
         -Dmaven.deploy.skip=true
-        -DGALASA_TOKEN=$GALASA_TOKEN \
         -DGALASA_BOOTSTRAP=$GALASA_BOOTSTRAP \
         -DGALASA_STREAM=$GALASA_STREAM "
-    info "Command is $cmd"
+    info "Command is $base_cmd plus the -DGALASA_TOKEN=xxx value."
+    cmd="$base_cmd -DGALASA_TOKEN=$GALASA_TOKEN"
     $cmd
     rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to publish the test catalog to the galasa ecosystem using maven. Return code: ${rc}" ; exit 1 ; fi
     success "OK"
@@ -155,18 +161,18 @@ function publish_to_server_using_maven {
 function publish_to_server_using_gradle {
     h1 "Publishing the test code to a Galasa ecosystem using gradle"
     info "Normally a deploy target publishes the maven artifacts to a maven store, but we just want to push the test catalog artifact into the Galasa server."
-    cmd="gradle deploytestcat \
-        -DGALASA_TOKEN=$GALASA_TOKEN \
+    base_cmd="gradle deploytestcat \
         -DGALASA_BOOTSTRAP=$GALASA_BOOTSTRAP \
         -DGALASA_STREAM=$GALASA_STREAM "
-    info "Command is $cmd"
+    info "Command is $base_cmd plus the -DGALASA_TOKEN=xxx value."
+    cmd="$base_cmd -DGALASA_TOKEN=$GALASA_TOKEN"
     $cmd
     rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to publish the test catalog to the galasa ecosystem using maven. Return code: ${rc}" ; exit 1 ; fi
     success "OK"
 }
 
 check_required_parameters_are_available
-if [[ "${BUILD_TECHNOLOGY}" == "maven" ]]; then
+if [[ "${build_system}" == "maven" ]]; then
     publish_to_server_using_maven
 else 
     publish_to_server_using_gradle

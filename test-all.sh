@@ -50,7 +50,7 @@ note() { printf "\n${underline}${bold}${blue}Note:${reset} ${blue}%s${reset}\n" 
 
 #-----------------------------------------------------------------------------------------
 function usage {
-    info "Syntax: run-locally.sh [OPTIONS]"
+    info "Syntax: test-all.sh [OPTIONS]"
     cat << EOF
 Options are:
 <No options>
@@ -71,19 +71,18 @@ while [ "$1" != "" ]; do
 done
 
 
-#-----------------------------------------------------------------------------------------
-function run_tests {
-    h1 "Running the test code locally"
-    # Add the "--log -" flag if you want to see more detailed output.
-    cmd="galasactl runs submit local --obr mvn:dev.galasa.example.banking/dev.galasa.example.banking.obr/0.0.1-SNAPSHOT/obr \
-        --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount \
-        --class dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccountExtended \
-        --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee \
-        --class dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayeeExtended \
-       "
-    $cmd
-    rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to run the test code. Return code: ${rc}" ; exit 1 ; fi
-    success "OK"
-}
+# First, with maven
+$BASEDIR/build-locally.sh --maven
+rc=$? ; if [[ "$rc" != "0" ]]; then error "Failed to build with maven" ; exit 1 ; fi
+$BASEDIR/deploy-to-ecosystem.sh --maven
+rc=$? ; if [[ "$rc" != "0" ]]; then error "Failed to deploy with maven" ; exit 1 ; fi
+$BASEDIR/run-locally.sh
+rc=$? ; if [[ "$rc" != "0" ]]; then error "Failed to run with artifacts built using maven" ; exit 1 ; fi
 
-run_tests
+# Now with gradle
+$BASEDIR/build-locally.sh --gradle
+rc=$? ; if [[ "$rc" != "0" ]]; then error "Failed to build with gradle" ; exit 1 ; fi
+$BASEDIR/deploy-to-ecosystem.sh --gradle
+rc=$? ; if [[ "$rc" != "0" ]]; then error "Failed to deploy with gradle" ; exit 1 ; fi
+$BASEDIR/run-locally.sh
+rc=$? ; if [[ "$rc" != "0" ]]; then error "Failed to run with artifacts built using gradle" ; exit 1 ; fi
