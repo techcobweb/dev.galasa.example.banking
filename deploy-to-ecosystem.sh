@@ -151,7 +151,7 @@ function publish_to_server_using_maven {
         -Dmaven.deploy.skip=true
         -DGALASA_BOOTSTRAP=$GALASA_BOOTSTRAP \
         -DGALASA_STREAM=$GALASA_STREAM "
-    info "Command is $base_cmd plus the -DGALASA_TOKEN=xxx value."
+    info "Command is $base_cmd -DGALASA_TOKEN=xxx"
     cmd="$base_cmd -DGALASA_TOKEN=$GALASA_TOKEN"
     $cmd
     rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to publish the test catalog to the galasa ecosystem using maven. Return code: ${rc}" ; exit 1 ; fi
@@ -164,7 +164,7 @@ function publish_to_server_using_gradle {
     base_cmd="gradle deploytestcat \
         -DGALASA_BOOTSTRAP=$GALASA_BOOTSTRAP \
         -DGALASA_STREAM=$GALASA_STREAM "
-    info "Command is $base_cmd plus the -DGALASA_TOKEN=xxx value."
+    info "Command is $base_cmd -DGALASA_TOKEN=xxx"
     cmd="$base_cmd -DGALASA_TOKEN=$GALASA_TOKEN"
     $cmd
     rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to publish the test catalog to the galasa ecosystem using maven. Return code: ${rc}" ; exit 1 ; fi
