@@ -24,7 +24,7 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - name: Build and publish maven packages
-        run: mvn --batch-mode --update-snapshots deploy -D
+        run: mvn --batch-mode --update-snapshots deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
