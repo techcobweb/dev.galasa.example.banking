@@ -3,7 +3,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'dev.galasa.tests' version '0.32.0'
+    id 'dev.galasa.tests' version '0.33.0'
     id 'biz.aQute.bnd.builder' version '6.4.0'
 }
 
@@ -26,7 +26,7 @@ version = '0.0.1-SNAPSHOT'
 // What are the dependencies of the test code ? 
 // When more managers and dependencies are added, this list will need to grow.
 dependencies {
-    implementation platform('dev.galasa:galasa-bom:0.32.0')
+    implementation platform('dev.galasa:galasa-bom:0.33.0')
 
     implementation 'dev.galasa:dev.galasa'
     implementation 'dev.galasa:dev.galasa.framework'

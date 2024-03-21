@@ -95,7 +95,7 @@ function build_using_maven {
 
 function build_using_gradle {
     h1 "Building the test code using gradle"
-    cmd="gradle clean build publishMaven"
+    cmd="gradle clean build publishToMavenLocal"
     info "Command is: $cmd"
     $cmd
     rc=$? ; if [[ "${rc}" != "0" ]]; then error "Failed to build the test code using maven. Return code: ${rc}" ; exit 1 ; fi

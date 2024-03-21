@@ -2,8 +2,8 @@
 plugins {
     id 'base'
     id 'maven-publish'
-    id 'dev.galasa.obr' version '0.32.0'
-    id 'dev.galasa.testcatalog' version '0.32.0'
+    id 'dev.galasa.obr' version '0.33.0'
+    id 'dev.galasa.testcatalog' version '0.33.0'
 }
 
 // Set the variables which will control what the built OSGi bundle will be called
@@ -33,21 +33,7 @@ publishing {
 }
 
 deployTestCatalog {
-    if ( System.getProperty("GALASA_BOOTSTRAP") != null) {
-        bootstrap = System.getProperty("GALASA_BOOTSTRAP")
-    } else {
-        bootstrap = "none"
-    }
-
-    if (System.getProperty("GALASA_STREAM")!= null) {
-        stream = System.getProperty("GALASA_STREAM")
-    } else {
-        stream = "none"
-    }
-
-    if(System.getProperty("GALASA_TOKEN") != null) {
-        galasaToken = System.getProperty("GALASA_TOKEN");
-    } else {
-        galasaToken = "none"
-    }
+    bootstrap = System.getProperty("GALASA_BOOTSTRAP")
+    stream = System.getProperty("GALASA_STREAM")
+    token = System.getProperty("GALASA_TOKEN");
 }
