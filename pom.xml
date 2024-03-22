@@ -140,4 +140,27 @@
 		</plugins>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>maven.central</id>
+			<url>https://repo.maven.apache.org/maven2/</url>
+		</repository>
+		<!-- To use the bleeding edge version of galasa, use the development obr -->
+		<repository>
+			<id>galasa.repo</id>
+			<url>https://development.galasa.dev/main/maven-repo/obr</url> 
+		</repository> 
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven.central</id>
+			<url>https://repo.maven.apache.org/maven2/</url>
+		</pluginRepository>
+		<!-- To use the bleeding edge version of galasa, use the development obr -->
+		<pluginRepository>
+			<id>galasa.repo</id>    
+			<url>https://development.galasa.dev/main/maven-repo/obr</url> 
+		</pluginRepository> 
+	</pluginRepositories>
+
 </project>
