@@ -8,7 +8,7 @@
 
 #-----------------------------------------------------------------------------------------                   
 #
-# Objectives: Sets the version number of this component.
+# Objectives: Sets the version number of the galasa bom component into the build files.
 #
 # Environment variable over-rides:
 # None
