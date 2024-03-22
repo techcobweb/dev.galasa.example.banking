@@ -23,7 +23,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package --settings settings.xml
+        run: mvn --batch-mode --update-snapshots package 
 
 
      
