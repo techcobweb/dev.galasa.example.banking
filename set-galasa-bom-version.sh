@@ -97,17 +97,47 @@ fi
 
 
 function update_pom_xml {
+
+    # We are looking to change the version in the middle of this part of the pom.xml
+    # <dependencyManagement>
+	# 	<dependencies>
+	# 		<dependency>
+	# 			<groupId>dev.galasa</groupId>
+	# 			<artifactId>galasa-bom</artifactId>
+	# 			<version>0.33.0</version>
+	# 			<type>pom</type>
+	# 			<scope>import</scope>
+	# 		</dependency>
+	# 	</dependencies>
+	# </dependencyManagement>
+
     source_file=$BASEDIR/pom.xml
 
-    temp_dir=temp
-    mkdir -p temp
-    temp_file="temp/pom.xml.temp"
+    temp_dir="$BASEDIR/temp"
+    mkdir -p $temp_dir
+    temp_file="$temp_dir/pom.xml.temp"
 
     set -o pipefail
 
     info "Updating file $source_file"
-    # Note: There are several matches for <version>...</version> but the first one is the bom always.
-    cat $source_file | sed "s/\<version>[.0-9]+\<\/version>/\<version>$component_version\<\/version>/1" > $temp_file
+    # Note: There are several matches for <version>...</version> so we need to find the correct one...
+    rm -f $temp_file
+    found_galasa_bom="false"
+    while IFS= read -r line; do 
+        outputLine="$line"
+        if [[ "$found_galasa_bom" == "false" ]]; then
+            if [[ "$line" =~ .*galasa-bom.* ]]; then
+                found_galasa_bom="true"
+            fi
+        else
+            # info "Before: $line"
+            outputLine=$(echo "$line" | sed "s/\<version>.*\<\/version>/\<version>$component_version\<\/version>/g")
+            # info "After: $outputLine"
+            found_galasa_bom="false"
+        fi
+        echo "$outputLine" >> $temp_file
+    done < $source_file
+
     rc=$?; if [[ "${rc}" != "0" ]]; then error "Failed to set the galasa bom version into $source_file file."; exit 1; fi
     cp $temp_file ${source_file}
     rc=$?; if [[ "${rc}" != "0" ]]; then error "Failed to overwrite new version of $source_file file."; exit 1; fi
