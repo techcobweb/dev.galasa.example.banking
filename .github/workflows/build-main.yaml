@@ -35,10 +35,10 @@ jobs:
     steps:
 
       - name: which version of galasactl are we using
-        uses: techcobweb/galasactl-action@v2
+        uses: techcobweb/galasactl-action@v3
         with:
-          galasactl-version: ${{env.GALASACTL_VERSION}}
-          galasactl-args: |
+          galasactl_version: ${{env.GALASACTL_VERSION}}
+          galasactl_args: |
             - --version
 
       # - name: run simple test
