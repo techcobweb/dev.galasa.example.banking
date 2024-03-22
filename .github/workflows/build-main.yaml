@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GALASACTL_VERSION: "0.31.0"
+  GALASACTL_VERSION: "0.32.0"
   MAVEN_CENTRAL_URL: https://repo.maven.apache.org/maven2
 
 jobs:
@@ -45,21 +45,25 @@ jobs:
         with:
           galasactl_version: ${{env.GALASACTL_VERSION}}
           galasactl_args: |
-            - runs 
-            - submit 
-            - local 
-            - --obr 
-            - mvn:dev.galasa.example.banking/dev.galasa.example.banking.obr/0.0.1-SNAPSHOT/obr 
-            - --class 
-            - dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee 
-            - --class
-            - dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount 
-            - --remoteMaven 
-            - ${{env.MAVEN_CENTRAL_URL}} 
-            - --throttle
-            - 1
+            - --version
             - --log
             - "-"
+            
+            # - runs 
+            # - submit 
+            # - local 
+            # - --obr 
+            # - mvn:dev.galasa.example.banking/dev.galasa.example.banking.obr/0.0.1-SNAPSHOT/obr 
+            # - --class 
+            # - dev.galasa.example.banking.payee/dev.galasa.example.banking.payee.TestPayee 
+            # - --class
+            # - dev.galasa.example.banking.account/dev.galasa.example.banking.account.TestAccount 
+            # - --remoteMaven 
+            # - ${{env.MAVEN_CENTRAL_URL}} 
+            # - --throttle
+            # - 1
+            # - --log
+            # - "-"
 
 
 
