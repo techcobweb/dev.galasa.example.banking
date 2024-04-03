@@ -2,8 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- GITHUB_REPOSITORY is set to something like {github-org}/{repo-name} -->
-
 	<groupId>dev.galasa.example.banking</groupId>
 	<artifactId>dev.galasa.example.banking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -38,11 +36,17 @@
 	</properties>
   
 	<modules>
-		<module>dev.galasa.example.banking.payee</module>
 		<module>dev.galasa.example.banking.account</module>
+		<module>dev.galasa.example.banking.payee</module>
 		<module>dev.galasa.example.banking.obr</module>
 	</modules>
 
+    <!-- 
+	The following is used if you are publishing built artifacts into github's maven repository.
+	Set it to something different if you are publishing to a different maven repository.
+
+	GITHUB_REPOSITORY is expected to hold a value of something like {github-org}/{repo-name}
+	-->
 	<distributionManagement>
 		<repository>
 			<id>github</id>
@@ -116,7 +120,6 @@
 				<artifactId>galasa-maven-plugin</artifactId>
 				<extensions>true</extensions>
 				<executions>
-
 					<!-- Build a test catalog -->
 					<execution>
 						<id>build-testcatalog</id>
@@ -135,6 +138,7 @@
 							<goal>deploytestcat</goal>
 						</goals>
 					</execution>
+
 				</executions>
 			</plugin>
 		</plugins>
@@ -145,21 +149,25 @@
 			<id>maven.central</id>
 			<url>https://repo.maven.apache.org/maven2/</url>
 		</repository>
+
 		<!-- To use the bleeding edge version of galasa, use the development obr -->
 		<repository>
 			<id>galasa.repo</id>
 			<url>https://development.galasa.dev/main/maven-repo/obr</url> 
-		</repository> 
+		</repository>
 	</repositories>
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>maven.central</id>
 			<url>https://repo.maven.apache.org/maven2/</url>
 		</pluginRepository>
+
 		<!-- To use the bleeding edge version of galasa, use the development obr -->
 		<pluginRepository>
 			<id>galasa.repo</id>    
 			<url>https://development.galasa.dev/main/maven-repo/obr</url> 
-		</pluginRepository> 
+		</pluginRepository>
 	</pluginRepositories>
+
 </project>

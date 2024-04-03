@@ -13,8 +13,8 @@ version = '0.0.1-SNAPSHOT'
 
 // What are the dependencies of the obr ? 
 dependencies {
-    bundle project(':dev.galasa.example.banking.payee')
     bundle project(':dev.galasa.example.banking.account')
+    bundle project(':dev.galasa.example.banking.payee')
 }
 
 def obrFile = file('build/galasa.obr')
@@ -32,6 +32,10 @@ publishing {
     }
 }
 
+// If we are deploying a test catalog using the galasa plugin,
+// directly to the ecosystem, then we can get the properties
+// we need from the system properties, passed on the command line using
+// -DGALASA_STREAM=xxx -DGALASA_BOOTSTRAP=xxx -DGALASA_TOKEN=xxx
 deployTestCatalog {
     bootstrap = System.getProperty("GALASA_BOOTSTRAP")
     stream = System.getProperty("GALASA_STREAM")
