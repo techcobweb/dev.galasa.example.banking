@@ -16,16 +16,17 @@
 
     <dependencies>
 
+
         <dependency>
             <groupId>dev.galasa.example.banking</groupId>
-            <artifactId>dev.galasa.example.banking.payee</artifactId>
+            <artifactId>dev.galasa.example.banking.account</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>dev.galasa.example.banking</groupId>
-            <artifactId>dev.galasa.example.banking.account</artifactId>
+            <artifactId>dev.galasa.example.banking.payee</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
